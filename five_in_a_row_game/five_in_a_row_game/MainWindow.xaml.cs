@@ -24,5 +24,11 @@ namespace five_in_a_row_game
         {
             InitializeComponent();
         }
+
+        private void bt_start_Click(object sender, RoutedEventArgs e)
+        {
+            playinig_field play = new playinig_field();
+            play.new_window(int.Parse(tb_width.Text), int.Parse(tb_height.Text));
+        }
     }
 }
