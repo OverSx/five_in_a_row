@@ -53,3 +53,18 @@ namespace five_in_a_row_game
             return playingGrid;
         }
 
+        public void new_window(int width, int height)
+        {
+            Grid newGrid = new Grid();
+            newGrid = myGrid(width, height);
+
+            letPlay_field newField = new letPlay_field(newGrid, width, height);
+
+            newField.Height = newGrid.Height + 42;
+            newField.Width = newGrid.Width + 20;
+            newField.GridForLife.Children.Insert(0, newGrid);
+
+            newField.ShowDialog();
+        }
+    }
+}
