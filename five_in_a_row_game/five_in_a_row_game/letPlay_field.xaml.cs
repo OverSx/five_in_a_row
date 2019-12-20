@@ -71,6 +71,8 @@ namespace five_in_a_row_game
         private void btn_player_Click(object sender, RoutedEventArgs e)
         {
             Button thisButton = (Button)e.OriginalSource;
+            WinCondition winORlose = new WinCondition();
+            bool win;
             if (array[(int)thisButton.GetValue(Grid.RowProperty), (int)thisButton.GetValue(Grid.ColumnProperty)] == 0)
             {
                 if (height_of_field <= 10 || width_of_field <= 10)
@@ -85,19 +87,25 @@ namespace five_in_a_row_game
 
                 array[(int)thisButton.GetValue(Grid.RowProperty), (int)thisButton.GetValue(Grid.ColumnProperty)] = 1;
 
+                win = winORlose.pounce_in_the_window(array, (int)thisButton.GetValue(Grid.RowProperty), (int)thisButton.GetValue(Grid.ColumnProperty));
+
+                if (win)
+                {
+                    MessageBox.Show("Вы победили!");
+                }
                 //bot_coord = ; //Тут ходит бот
 
-                if (height_of_field <= 10 || width_of_field <= 10)
-                {
-                    field_for_play[bot_coord[0], bot_coord[1]].FontSize = 60;
-                }
-                else if (height_of_field <= 20 || width_of_field <= 20)
-                {
-                    field_for_play[bot_coord[0], bot_coord[1]].FontSize = 35;
-                }
-                field_for_play[bot_coord[0], bot_coord[1]].Content = "O";
+                //if (height_of_field <= 10 || width_of_field <= 10)
+                //{
+                //    field_for_play[bot_coord[0], bot_coord[1]].FontSize = 60;
+                //}
+                //else if (height_of_field <= 20 || width_of_field <= 20)
+                //{
+                //    field_for_play[bot_coord[0], bot_coord[1]].FontSize = 35;
+                //}
+                //field_for_play[bot_coord[0], bot_coord[1]].Content = "O";
 
-                array[bot_coord[0], bot_coord[1]] = 2;
+                //array[bot_coord[0], bot_coord[1]] = 2;
             }
             else
             {
